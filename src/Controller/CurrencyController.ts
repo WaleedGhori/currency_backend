@@ -1,8 +1,5 @@
 import { Request, Response } from "express";
 import axios from "axios";
-import User from "../Model/UserModel";
-
-
 /**
  * @param from - Currency code to convert from
  * @param to - Currency code to convert to
@@ -37,26 +34,6 @@ export const convertCurrency = async (req: Request, res: Response)=> {
     return res.status(200).json({
         message:"Currency conversion successful.",
         data: response.data,
-    })
-  } catch (error) {
-    console.error("Currency conversion failed:", error);
-    res.status(500).json({ error: "Currency conversion failed." });
-  }
-
-};
-
-export const getMe = async (req: Request, res: Response)=> {
- 
-  try {
-     let find  =  await User.find()
-    if (!find) {
-      return res.status(404).json({ error: "User not found." });
-    }
-   
-
-    return res.status(200).json({
-        message:"Currency conversion successful.",
-        data: find
     })
   } catch (error) {
     console.error("Currency conversion failed:", error);
